@@ -15,6 +15,9 @@ services:
     image: node:latest
     restart: always
     container_name: api
+    environment:
+      - REDIS_PORT=6379
+      - REDIS_HOST=cache
     ports:
       - 3000:3000
     volumes:

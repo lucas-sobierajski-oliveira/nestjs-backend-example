@@ -12,10 +12,9 @@ export class RedisClient {
 
     constructor() {
         this._redis = new Redis({
-            host: 'cache',
-            port: 6379
+            host: process.env.REDIS_HOST ?? 'localhost',
+            port: process.env.REDIS_PORT ? parseInt(process.env.REDIS_PORT) : 6379
         })
-
     }
 
     async get(id: string): Promise<CustomerDto> {
