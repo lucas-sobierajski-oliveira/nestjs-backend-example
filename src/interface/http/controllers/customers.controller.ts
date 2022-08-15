@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Put } from '@nestjs/common'
+import { Controller, Get, Post, Body, Param, Put, HttpStatus } from '@nestjs/common'
 import { ApiCreatedResponse, ApiResponse, ApiBody, ApiBearerAuth } from '@nestjs/swagger';
 import { GetCustomerOperation } from '../../../app/operations/customers/get-cutomer.operations'
 import { CreateCustomerOperation } from '../../../app/operations/customers/create-customer.operation'
@@ -19,7 +19,7 @@ export class CustomersController {
 
     @Get(':id')
     @ApiBearerAuth()
-    @ApiResponse({ status: 401, description: 'Unauthorized.' })
+    @ApiResponse({ status: HttpStatus.UNAUTHORIZED, description: 'Unauthorized.' })
     @ApiCreatedResponse({
         description: 'O registro foi encontrado com sucesso',
         type: CustomerDto
@@ -31,19 +31,19 @@ export class CustomersController {
 
     @Put(':id')
     @ApiBearerAuth()
-    @ApiResponse({ status: 401, description: 'Unauthorized.' })
+    @ApiResponse({ status: HttpStatus.UNAUTHORIZED, description: 'Unauthorized.' })
     @ApiCreatedResponse({
         description: 'O registro foi editado com sucesso',
         type: CustomerDto,
     })
-    @ApiBody({ type: CreateCustomerDto })
+    @ApiBody({ type: UpdateCustomerDto })
     async updateCustomer(@Param('id') id: string, @Body() updateCustomerDto: UpdateCustomerDto) {
         return this.updateCustomerOperation.execute(id, updateCustomerDto)
     }
 
     @Post()
     @ApiBearerAuth()
-    @ApiResponse({ status: 401, description: 'Unauthorized.' })
+    @ApiResponse({ status: HttpStatus.UNAUTHORIZED, description: 'Unauthorized.' })
     @ApiCreatedResponse({
         description: 'O registro foi criado com sucesso',
         type: CustomerDto,
