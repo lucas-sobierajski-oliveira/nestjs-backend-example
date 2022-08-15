@@ -26,7 +26,7 @@ export class KeycloakClient {
             if (error.response.status == HttpStatus.UNAUTHORIZED) {
                 throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED)
             } else {
-                throw new HttpException('Internal Server Error', HttpStatus.INTERNAL_SERVER_ERROR)
+                throw new HttpException('Bad Gateway', HttpStatus.BAD_GATEWAY)
             }
         }
     }
