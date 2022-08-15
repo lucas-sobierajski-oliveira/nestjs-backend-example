@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body, Param, Put } from '@nestjs/common'
-import { ApiCreatedResponse, ApiResponse, ApiBody } from '@nestjs/swagger';
+import { ApiCreatedResponse, ApiResponse, ApiBody, ApiBearerAuth } from '@nestjs/swagger';
 import { GetCustomerOperation } from '../../../app/operations/customers/get-cutomer.operations'
 import { CreateCustomerOperation } from '../../../app/operations/customers/create-customer.operation'
 import { UpdateCustomerOperation } from '../../../app/operations/customers/update-customer.operation'
@@ -18,17 +18,20 @@ export class CustomersController {
 
 
     @Get(':id')
-    @ApiResponse({ status: 403, description: 'Forbidden.' })
+    @ApiBearerAuth()
+    @ApiResponse({ status: 401, description: 'Unauthorized.' })
     @ApiCreatedResponse({
         description: 'O registro foi encontrado com sucesso',
-        type: CustomerDto,
+        type: CustomerDto
+
     })
     async getCustomer(@Param('id') id: string) {
         return this.getCustomerOperation.execute(id);
     }
 
     @Put(':id')
-    @ApiResponse({ status: 403, description: 'Forbidden.' })
+    @ApiBearerAuth()
+    @ApiResponse({ status: 401, description: 'Unauthorized.' })
     @ApiCreatedResponse({
         description: 'O registro foi editado com sucesso',
         type: CustomerDto,
@@ -39,7 +42,8 @@ export class CustomersController {
     }
 
     @Post()
-    @ApiResponse({ status: 403, description: 'Forbidden.' })
+    @ApiBearerAuth()
+    @ApiResponse({ status: 401, description: 'Unauthorized.' })
     @ApiCreatedResponse({
         description: 'O registro foi criado com sucesso',
         type: CustomerDto,

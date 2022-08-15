@@ -24,6 +24,16 @@ describe('interface :: http :: middlewares :: AuthorizationMiddleware', () => {
             await authorizationMiddleware.use(req, '', () => { })
             expect(checkTokenOperation.execute).toBeCalledWith(token)
         })
+
+        it('shoud call use whithout authorization header', async () => {
+            const token = 'Bearer undefined'
+            const req = { headers: {} }
+
+            jest.spyOn(checkTokenOperation, 'execute').mockResolvedValue(token)
+
+            await authorizationMiddleware.use(req, '', () => { })
+            expect(checkTokenOperation.execute).toBeCalledWith(token)
+        })
     })
 })
 
