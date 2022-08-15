@@ -29,7 +29,7 @@ export class RedisClient {
 
             return { ...customer, id }
         } catch (error) {
-            throw error
+            throw new HttpException('Bad Gateway', HttpStatus.BAD_GATEWAY)
         }
 
     }
@@ -49,7 +49,7 @@ export class RedisClient {
 
             return { ...updateCustomer, id }
         } catch (error) {
-            throw error
+            throw new HttpException('Bad Gateway', HttpStatus.BAD_GATEWAY)
         }
 
     }
@@ -64,7 +64,7 @@ export class RedisClient {
 
             return { ...customer, id }
         } catch (error) {
-            throw error
+            throw new HttpException('Bad Gateway', HttpStatus.BAD_GATEWAY)
         }
     }
 
