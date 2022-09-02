@@ -1,4 +1,4 @@
-import { RedisClient } from '../../../../../src/infra/integration/storage/redis/redis.client'
+import { RedisClient } from '../../../../../src/external/integration/storage/redis/redis.client'
 import { StorageService } from '../../../../../src/app/services/storage/storage.service'
 import { Redis } from 'ioredis'
 

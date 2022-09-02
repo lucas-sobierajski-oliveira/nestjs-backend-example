@@ -1,6 +1,6 @@
 import { StorageService } from '../../../../../src/app/services/storage/storage.service'
-import { CreateCustomerOperation } from '../../../../../src/app/operations/customers/create-customer.operation'
-import { RedisClient } from '../../../../../src/infra/integration/storage/redis/redis.client'
+import { CreateCustomerOperation } from '../../../../../src/app/useCases/customers/create-customer'
+import { RedisClient } from '../../../../../src/external/integration/storage/redis/redis.client'
 
 describe('app :: operations :: customers :: CreateCustomerOperation', () => {
     let createCustomerOperation: CreateCustomerOperation

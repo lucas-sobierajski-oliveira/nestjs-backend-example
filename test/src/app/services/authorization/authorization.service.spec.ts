@@ -1,4 +1,4 @@
-import { KeycloakClient } from '../../../../../src/infra/integration/rest/keycloack/keycloak.client'
+import { KeycloakClient } from '../../../../../src/external/integration/rest/keycloack/keycloak.client'
 import { AuthorizationService } from '../../../../../src/app/services/authorization/authorization.service'
 
 describe('app :: services :: authorization :: AuthorizationService', () => {

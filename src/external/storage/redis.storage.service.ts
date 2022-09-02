@@ -2,12 +2,13 @@ import { Injectable, HttpException, HttpStatus } from '@nestjs/common'
 import Redis from 'ioredis'
 import { v4 as uuidv4 } from 'uuid';
 
-import { CustomerDto } from 'src/domain/customers/dto/response/customer.dto'
-import { CreateCustomerDto } from '../../../../domain/customers/dto/request/create-customer.dto'
-import { UpdateCustomerDto } from '../../../../domain/customers/dto/request/update-customer.dto'
+import { CustomerDto } from '@/dto/customers/response/customer.dto'
+import { CreateCustomerDto } from '@/dto/customers/request/create-customer.dto'
+import { UpdateCustomerDto } from '@/dto/customers/request/update-customer.dto'
+import { StorageServiceInterface } from '@/app/useCases/customers/_ports/storage.service.interface';
 
 @Injectable()
-export class RedisClient {
+export class RedisStorageService implements StorageServiceInterface {
     _redis: Redis
 
     constructor() {

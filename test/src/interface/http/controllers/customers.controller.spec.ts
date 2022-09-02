@@ -1,8 +1,8 @@
-import { CreateCustomerOperation } from "../../../../../src/app/operations/customers/create-customer.operation"
-import { GetCustomerOperation } from "../../../../../src/app/operations/customers/get-cutomer.operations"
-import { UpdateCustomerOperation } from "../../../../../src/app/operations/customers/update-customer.operation"
+import { CreateCustomerOperation } from "../../../../../src/app/useCases/customers/create-customer"
+import { GetCustomerOperation } from "../../../../../src/app/useCases/customers/get-cutomer"
+import { UpdateCustomerOperation } from "../../../../../src/app/useCases/customers/update-customer"
 import { StorageService } from "../../../../../src/app/services/storage/storage.service"
-import { CustomersController } from "../../../../../src/interface/http/controllers/customers.controller"
+import { CustomersController } from "../../../../../src/presentation/http/controllers/customers.controller"
 
 
 describe('interface :: http :: controllers :: CustomersController', () => {

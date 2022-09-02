@@ -1,6 +1,6 @@
 import { StorageService } from '../../../../../src/app/services/storage/storage.service'
-import { GetCustomerOperation } from '../../../../../src/app/operations/customers/get-cutomer.operations'
-import { RedisClient } from '../../../../../src/infra/integration/storage/redis/redis.client'
+import { GetCustomerOperation } from '../../../../../src/app/useCases/customers/get-cutomer'
+import { RedisClient } from '../../../../../src/external/integration/storage/redis/redis.client'
 
 describe('app :: operations :: customers :: getCustomerOperation', () => {
     let getCustomerOperation: GetCustomerOperation

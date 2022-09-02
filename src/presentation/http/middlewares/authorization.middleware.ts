@@ -1,5 +1,5 @@
-import { Injectable, NestMiddleware, HttpException, HttpStatus } from '@nestjs/common'
-import { CheckTokenOperation } from '../../../app/operations/authorization/check-token.operation'
+import { Injectable, NestMiddleware } from '@nestjs/common'
+import { CheckTokenOperation } from '@/app/useCases/authorization/check-token'
 
 @Injectable()
 export class AuthorizationMiddleware implements NestMiddleware {

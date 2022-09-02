@@ -1,7 +1,7 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
-import { CustomersController } from './controllers/customers.controller'
-import { AuthorizationMiddleware } from './middlewares/authorization.middleware'
-import { OperationsModule } from '../../app/operations/operations.module'
+import { CustomersController } from '@/presentation/http/controllers/customers.controller'
+import { AuthorizationMiddleware } from '@/presentation/http/middlewares/authorization.middleware'
+import { OperationsModule } from '@/app/useCases/operations.module'
 
 @Module({
     imports: [OperationsModule],

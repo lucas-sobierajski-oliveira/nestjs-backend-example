@@ -1,0 +1,8 @@
+# requisitos funcionais
+
+# Requisitos não funcionais
+- ajustar paths de chamada dos módulos
+- add interface useCase e adapter
+- add interface HttpRequest e HttpResponse
+- criar classe de erros do projeto
+- entender a aplicação do either para aplicar no projeto

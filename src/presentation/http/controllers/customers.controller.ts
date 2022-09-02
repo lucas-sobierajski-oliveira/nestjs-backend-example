@@ -1,21 +1,23 @@
 import { Controller, Get, Post, Body, Param, Put, HttpStatus } from '@nestjs/common'
 import { ApiCreatedResponse, ApiResponse, ApiBody, ApiBearerAuth } from '@nestjs/swagger';
-import { GetCustomerOperation } from '../../../app/operations/customers/get-cutomer.operations'
-import { CreateCustomerOperation } from '../../../app/operations/customers/create-customer.operation'
-import { UpdateCustomerOperation } from '../../../app/operations/customers/update-customer.operation'
-import { CreateCustomerDto } from '../../../domain/customers/dto/request/create-customer.dto'
-import { UpdateCustomerDto } from '../../../domain/customers/dto/request/update-customer.dto'
-import { CustomerDto } from '../../../domain/customers/dto/response/customer.dto'
+
+import { GetCustomer } from '@/app/useCases/customers/get-cutomer'
+import { CreateCustomer } from '@/app/useCases/customers/create-customer'
+import { UpdateCustomer } from '@/app/useCases/customers/update-customer'
+import { CreateCustomerDto } from '@/dto/customers/request/create-customer.dto'
+import { UpdateCustomerDto } from '@/dto/customers/request/update-customer.dto'
+import { CustomerDto } from '@/dto/customers/response/customer.dto'
 
 @Controller('customers')
 export class CustomersController {
 
     constructor(
-        private readonly getCustomerOperation: GetCustomerOperation,
-        private readonly createCustomerOperation: CreateCustomerOperation,
-        private readonly updateCustomerOperation: UpdateCustomerOperation
+        private readonly getCustomerUseCase: GetCustomer,
+        private readonly createCustomerUseCase: CreateCustomer,
+        private readonly updateCustomerUseCase: UpdateCustomer
     ) { }
 
+    // nessa camada que será definido os http response. ex: forbidden, created, not_found
 
     @Get(':id')
     @ApiBearerAuth()
@@ -26,7 +28,7 @@ export class CustomersController {
 
     })
     async getCustomer(@Param('id') id: string) {
-        return this.getCustomerOperation.execute(id);
+        return this.getCustomerUseCase.execute(id);
     }
 
     @Put(':id')
@@ -38,7 +40,7 @@ export class CustomersController {
     })
     @ApiBody({ type: UpdateCustomerDto })
     async updateCustomer(@Param('id') id: string, @Body() updateCustomerDto: UpdateCustomerDto) {
-        return this.updateCustomerOperation.execute(id, updateCustomerDto)
+        return this.updateCustomerUseCase.execute(id, updateCustomerDto)
     }
 
     @Post()
@@ -50,6 +52,6 @@ export class CustomersController {
     })
     @ApiBody({ type: CreateCustomerDto })
     async createCustomer(@Body() createCustomerDto: CreateCustomerDto) {
-        return this.createCustomerOperation.execute(createCustomerDto);
+        return this.createCustomerUseCase.execute(createCustomerDto);
     }
 }

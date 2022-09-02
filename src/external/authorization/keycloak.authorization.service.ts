@@ -1,8 +1,10 @@
 import { Injectable, HttpStatus, HttpException } from '@nestjs/common'
 import axios from 'axios'
 
+import { AuthorizationServiceInterface } from '@/app/useCases/authorization/_ports/authorization.service.interface'
+
 @Injectable()
-export class KeycloakClient {
+export class KeycloakAuthorizationService implements AuthorizationServiceInterface {
     _httpClient
 
     constructor() {

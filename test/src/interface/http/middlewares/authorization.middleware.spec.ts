@@ -1,6 +1,6 @@
 import { AuthorizationService } from "../../../../../src/app/services/authorization/authorization.service"
-import { CheckTokenOperation } from "../../../../../src/app/operations/authorization/check-token.operation"
-import { AuthorizationMiddleware } from "../../../../../src/interface/http/middlewares/authorization.middleware"
+import { CheckTokenOperation } from "../../../../../src/app/useCases/authorization/check-token"
+import { AuthorizationMiddleware } from "../../../../../src/presentation/http/middlewares/authorization.middleware"
 
 
 describe('interface :: http :: middlewares :: AuthorizationMiddleware', () => {

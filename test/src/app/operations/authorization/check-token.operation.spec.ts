@@ -1,6 +1,6 @@
-import { KeycloakClient } from '../../../../../src/infra/integration/rest/keycloack/keycloak.client'
+import { KeycloakClient } from '../../../../../src/external/integration/rest/keycloack/keycloak.client'
 import { AuthorizationService } from '../../../../../src/app/services/authorization/authorization.service'
-import { CheckTokenOperation } from '../../../../../src/app/operations/authorization/check-token.operation'
+import { CheckTokenOperation } from '../../../../../src/app/useCases/authorization/check-token'
 
 describe('app :: operations :: authorization :: CheckTokenOperation', () => {
     let checkTokenOperation: CheckTokenOperation
